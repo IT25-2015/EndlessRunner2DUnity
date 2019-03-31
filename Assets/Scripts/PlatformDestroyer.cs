@@ -15,7 +15,7 @@ public class PlatformDestroyer : MonoBehaviour
     }
     void Start()
     {
-        destroyer = GameObject.Find("PlatformDestroyer");
+        destroyer = GameObject.Find("DestructionPoint");
         transform.position = pos;
     }
 

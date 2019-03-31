@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Runner;
 
 public class CamManager : MonoBehaviour
 {
@@ -8,25 +9,29 @@ public class CamManager : MonoBehaviour
     public Transform playerToFollow;
     public Transform farLeft;
     public Transform farRight;
+    public GameObject mainCamera;
 
     private Vector3 offset;
     // Start is called before the first frame update
+
+    private void Awake()
+    {
+        RunnerManager.CamManager = this;
+    }
     void Start()
     {
-        offset = transform.position - player.transform.position;
+        offset = mainCamera.transform.position - player.transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
-        //transform.position = player.transform.position + offset;
-        // transform.position.z = target.position.z - offset;
         if (playerToFollow)
         {
-            Vector3 newPosition = transform.position;
+            Vector3 newPosition = mainCamera.transform.position;
             newPosition.y = playerToFollow.position.y;
             newPosition.y = Mathf.Clamp(newPosition.y, farLeft.position.y, farRight.position.y);
-            transform.position = newPosition;
+            mainCamera.transform.position = newPosition;
         }
 
     }

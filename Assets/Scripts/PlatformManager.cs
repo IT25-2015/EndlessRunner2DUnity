@@ -1,29 +1,29 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Runner;
 
 public class PlatformManager : MonoBehaviour
 {
     public GameObject platform;
+    public GameObject generatorPrefab;
     public Transform generatorPoint;
     public float distanceBetween;
 
     private float platformWidth;
     private Vector3 pos;
+    public float seconds;
 
-    //za unistavanje
-    public float distanceBetweenMin;
-    public float distanceBetweenMax;
     // Start is called before the first frame update
 
     private void Awake()
     {
-        
+        RunnerManager.PlatformManager = this;
     }
 
     void Start()
     {
-        pos = transform.position;
+        pos = generatorPrefab.transform.position;
         platformWidth = platform.GetComponent<BoxCollider2D>().size.x;
     }
 
@@ -32,9 +32,9 @@ public class PlatformManager : MonoBehaviour
     {
         if(pos.y < generatorPoint.transform.position.y)
         {
-           // distanceBetween = Random.Range(distanceBetweenMin, distanceBetweenMax);
             pos = new Vector3(pos.x, pos.y + platformWidth + distanceBetween, pos.z);
             Instantiate(platform, pos, transform.rotation);
         }
     }
+   
 }
