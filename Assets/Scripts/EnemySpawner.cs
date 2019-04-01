@@ -50,17 +50,20 @@ public class EnemySpawner : MonoBehaviour
 
     void Spawn()
     {
-        
-        int randomNumber;
-        randomNumber = Random.Range(1, 10);
-        if(randomNumber <= 5)
-        {           
-            SpawnLeft();
-        }
-        else
+        if (RunnerManager.UIManager.isPlay)
         {
-            SpawnRight();
+            int randomNumber;
+            randomNumber = Random.Range(1, 10);
+            if (randomNumber <= 5)
+            {
+                SpawnLeft();
+            }
+            else
+            {
+                SpawnRight();
+            }
         }
+        
     }
 
   

@@ -56,19 +56,19 @@ public class PlayerManager : MonoBehaviour
         {
             speed = 7f;
             airSpeed = 7f;
-            Debug.Log(speed);
+           // Debug.Log(speed);
         }
         if (currCountdownValue < 120)
         {
             speed = 9f;
             airSpeed = 9f;
-            Debug.Log(speed);
+            //Debug.Log(speed);
         }
         if (currCountdownValue < 90)
         {
             speed = 12f;
             airSpeed = 12f;
-            Debug.Log(speed);
+            //Debug.Log(speed);
         }
     }
 

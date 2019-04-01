@@ -8,16 +8,18 @@ public class UIManager : MonoBehaviour
 {
     // Start is called before the first frame update
     [SerializeField] private Text scoreText;
-    int score;
-    public bool gameOver;
-    //public Button[] buttons;
     [SerializeField] private GameObject gameOverButtons;
+    [SerializeField] private GameObject scoreObject;
     [SerializeField] private GameObject inGameButtons;
     [SerializeField] private GameObject mainMenuPanel;
+    //[SerializeField] private GameObject gamePanel;
     [SerializeField] private GameObject playerPrefab;
     [SerializeField] private GameObject platformPrefab;
-   
+    [HideInInspector] public bool isPlay;
+    int score;
+    public bool gameOver;
     private PlayerManager player;
+    //public Button[] buttons;
 
     private void Awake()
     {
@@ -29,23 +31,27 @@ public class UIManager : MonoBehaviour
         gameOver = false;
         InvokeRepeating("ScoreUpdate", 1f, 1f);
         player = GetComponent<PlayerManager>();
+        isPlay = false;
     }
     void ScoreUpdate()
     {
         if (!gameOver)
         {
-            if (player.speed <= 7f)
+            if (isPlay)
             {
-                score += 1;
+                if (player.speed <= 7f)
+                {
+                    score += 1;
+                }
+                if (player.speed > 7f && player.speed < 12f)
+                {
+                    score += 2;
+                }
+                if (player.speed >= 12f)
+                {
+                    score += 3;
+                }
             }
-            if (player.speed > 7f && player.speed < 12f)
-            {
-                score += 2;
-            }
-            if (player.speed >= 12f)
-            {
-                score += 3;
-            } 
         }
     }
     public void Play()
@@ -56,7 +62,9 @@ public class UIManager : MonoBehaviour
         gameOverButtons.SetActive(true);
         gameOverButtons.SetActive(false);
         inGameButtons.SetActive(true);
-        
+        scoreObject.SetActive(true);
+        //gamePanel.SetActive(true);
+        isPlay = true;
     }
 
     public void GameOver()
