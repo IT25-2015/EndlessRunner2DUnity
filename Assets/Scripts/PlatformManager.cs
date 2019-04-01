@@ -5,9 +5,9 @@ using Runner;
 
 public class PlatformManager : MonoBehaviour
 {
-    public GameObject platform;
-    public GameObject generatorPrefab;
-    public Transform generatorPoint;
+    [SerializeField] private GameObject platform;
+    [SerializeField] private GameObject generatorPrefab;
+    [SerializeField] private Transform generatorPoint;
     public float distanceBetween;
 
     private float platformWidth;

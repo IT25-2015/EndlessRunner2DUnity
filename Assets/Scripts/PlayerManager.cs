@@ -16,6 +16,7 @@ public class PlayerManager : MonoBehaviour
     //public GameObject playerPrefab;
     bool isDead;
     //private Vector2 vel;
+    float countdownValue;
 
     private void Awake()
     {
@@ -27,18 +28,18 @@ public class PlayerManager : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         position = transform.position;
         isDead = false;
+        countdownValue = 140;
+        StartCoroutine(StartCountdown());
     }
 
     // Update is called once per frame
     void Update()
     {
-        
-        StartCoroutine(StartCountdown());
         transform.Translate(Vector3.up * Time.deltaTime * speed, Space.World); 
     }
 
     float currCountdownValue = 0;
-    public IEnumerator StartCountdown(float countdownValue = 160)
+    public IEnumerator StartCountdown()
     {
         currCountdownValue = countdownValue;
         while (currCountdownValue > 0)
@@ -55,16 +56,19 @@ public class PlayerManager : MonoBehaviour
         {
             speed = 7f;
             airSpeed = 7f;
+            Debug.Log(speed);
         }
         if (currCountdownValue < 120)
         {
             speed = 9f;
             airSpeed = 9f;
+            Debug.Log(speed);
         }
         if (currCountdownValue < 90)
         {
             speed = 12f;
             airSpeed = 12f;
+            Debug.Log(speed);
         }
     }
 

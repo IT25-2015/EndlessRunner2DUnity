@@ -5,11 +5,11 @@ using Runner;
 
 public class CamManager : MonoBehaviour
 {
-    public GameObject player;
-    public Transform playerToFollow;
-    public Transform farLeft;
-    public Transform farRight;
-    public GameObject mainCamera;
+    [SerializeField] private GameObject player;
+    [SerializeField] private Transform playerToFollow;
+    [SerializeField] private Transform farLeft;
+    [SerializeField] private Transform farRight;
+    [SerializeField] private GameObject mainCamera;
 
     private Vector3 offset;
     // Start is called before the first frame update

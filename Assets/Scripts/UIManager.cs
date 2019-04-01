@@ -7,13 +7,17 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
     // Start is called before the first frame update
-    public Text scoreText;
+    [SerializeField] private Text scoreText;
     int score;
     public bool gameOver;
     //public Button[] buttons;
-    public GameObject gameOverButtons;
-    public GameObject inGameButtons;
-    PlayerManager player;
+    [SerializeField] private GameObject gameOverButtons;
+    [SerializeField] private GameObject inGameButtons;
+    [SerializeField] private GameObject mainMenuPanel;
+    [SerializeField] private GameObject playerPrefab;
+    [SerializeField] private GameObject platformPrefab;
+   
+    private PlayerManager player;
 
     private void Awake()
     {
@@ -46,7 +50,13 @@ public class UIManager : MonoBehaviour
     }
     public void Play()
     {
-        //Application.LoadLevel("Menu");
+        mainMenuPanel.SetActive(false);
+        playerPrefab.SetActive(true);
+        platformPrefab.SetActive(true);
+        gameOverButtons.SetActive(true);
+        gameOverButtons.SetActive(false);
+        inGameButtons.SetActive(true);
+        
     }
 
     public void GameOver()
@@ -67,6 +77,11 @@ public class UIManager : MonoBehaviour
     void Update()
     {
         scoreText.text = "Score : " + score;
+        if(gameOver == true)
+        {
+            gameOverButtons.SetActive(true);
+            inGameButtons.SetActive(false);
+        }
     }
 
     public void Pause()

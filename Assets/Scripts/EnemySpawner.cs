@@ -6,12 +6,12 @@ using Runner;
 public class EnemySpawner : MonoBehaviour
 {
 
-    public GameObject spawnerPrefab;
-    public GameObject[] enemies;
-    public float maxPos = 1.35f;
-    public float minPos = -1.23f;
+    [SerializeField] private GameObject spawnerPrefab;
+    [SerializeField] private GameObject[] enemies;
+    [SerializeField] private float maxPos = 1.35f;
+    [SerializeField] private float minPos = -1.23f;
     private Vector3 p;
-    public Transform spawnObject;
+    [SerializeField] private Transform spawnObject;
     int enemyNO;
 
     private void Awake()
@@ -31,7 +31,7 @@ public class EnemySpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Invoke("EnemyChanger", 1f);
+       // Invoke("EnemyChanger", 1f);
     }
 
     void SpawnLeft()
