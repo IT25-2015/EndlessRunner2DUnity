@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3128941362979278141}
   - component: {fileID: 3128941362979278140}
   - component: {fileID: 3128941362979278115}
+  - component: {fileID: 20115659}
   m_Layer: 0
   m_Name: GameEngine
   m_TagString: Untagged
@@ -48,12 +49,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreText: {fileID: 0}
-  gameOver: 0
   gameOverButtons: {fileID: 0}
+  scoreObject: {fileID: 0}
   inGameButtons: {fileID: 0}
   mainMenuPanel: {fileID: 0}
   playerPrefab: {fileID: 0}
   platformPrefab: {fileID: 0}
+  isPlay: 0
+  gameOver: 0
 --- !u!114 &3128941362979278142
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -61,7 +64,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3128941362979278114}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 99fe5af0e7c1dd7458aa65e716b80188, type: 3}
   m_Name: 
@@ -102,6 +105,7 @@ MonoBehaviour:
   - {fileID: 3162908736339502893, guid: f997eef3720b55a408048dd928e96ffd, type: 3}
   - {fileID: 6783958534090111589, guid: a8ebe99d6dc81d2438523710da0d3e63, type: 3}
   - {fileID: 8064977811095169795, guid: d625e8a8b8c1ef84690c694ebdf001f0, type: 3}
+  activeEnemies: []
   maxPos: 1.35
   minPos: -1.23
   spawnObject: {fileID: 0}
@@ -123,3 +127,19 @@ MonoBehaviour:
   generatorPoint: {fileID: 0}
   distanceBetween: 1
   seconds: 5
+--- !u!114 &20115659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3128941362979278114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1efc8246e0e73564990a7be8b3e9890c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  score: 0
+  highScore: 0
+  highScoreText: {fileID: 0}
+  scoreText: {fileID: 0}

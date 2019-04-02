@@ -99,6 +99,25 @@ namespace Runner
             }
         }
 
+        private static EnemyManager enemyManager;
+        public static EnemyManager EnemyManager
+        {
+            get
+            {
+                if (enemyManager == null)
+                {
+                    enemyManager = GameEngine.GetComponent<EnemyManager>();
+                    if (enemyManager == null)
+                        Debug.LogError("EnemyManager doesn't exist!");
+                }
+                return enemyManager;
+            }
+            set
+            {
+                enemyManager = value;
+            }
+        }
+
         private static PlatformManager platformManager;
         public static PlatformManager PlatformManager
         {
@@ -138,6 +157,48 @@ namespace Runner
             set
             {
                 checker = value;
+            }
+        }
+
+        private static SaveGameManager saveGame;
+        public static SaveGameManager SaveGame
+        {
+            get
+            {
+                if(saveGame == null)
+                {
+                    saveGame = GameEngine.GetComponent<SaveGameManager>();
+                    if(saveGame == null)
+                    {
+                        Debug.LogError("SaveGameManager doesn't exist!");
+                    }
+                }
+                return saveGame;
+            }
+            set
+            {
+                saveGame = value;
+            }
+        }
+
+        private static PlayerChecker playerChecker;
+        public static PlayerChecker PlayerChecker
+        {
+            get
+            {
+                if (playerChecker == null)
+                {
+                    playerChecker = GameEngine.GetComponent<PlayerChecker>();
+                    if (playerChecker == null)
+                    {
+                        Debug.LogError("SaveGameManager doesn't exist!");
+                    }
+                }
+                return playerChecker;
+            }
+            set
+            {
+                playerChecker = value;
             }
         }
     }

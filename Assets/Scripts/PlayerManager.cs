@@ -9,13 +9,10 @@ public class PlayerManager : MonoBehaviour
 {
 
     [HideInInspector] public float airSpeed = 7f;
-    [HideInInspector] public float speed = 7f;
-    //public UIManager ui;
+    public float speed = 7f;
     private Rigidbody2D rb;
     Vector3 position;
-    //public GameObject playerPrefab;
-    bool isDead;
-    //private Vector2 vel;
+    [HideInInspector] public bool isDead;
     float countdownValue;
 
     private void Awake()
@@ -56,19 +53,16 @@ public class PlayerManager : MonoBehaviour
         {
             speed = 7f;
             airSpeed = 7f;
-           // Debug.Log(speed);
         }
         if (currCountdownValue < 120)
         {
             speed = 9f;
             airSpeed = 9f;
-            //Debug.Log(speed);
         }
         if (currCountdownValue < 90)
         {
             speed = 12f;
             airSpeed = 12f;
-            //Debug.Log(speed);
         }
     }
 
@@ -104,6 +98,7 @@ public class PlayerManager : MonoBehaviour
         if(collision.tag == "Enemy")
         {
             IsDead();
+            RunnerManager.UIManager.DestroyEnemies();
         }
     }
 }

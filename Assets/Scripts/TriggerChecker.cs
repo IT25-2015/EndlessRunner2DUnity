@@ -29,5 +29,6 @@ public class TriggerChecker : MonoBehaviour
     void DestroyPlatform()
     {
         Destroy(transform.gameObject, 2f);
+        
     }
 }
