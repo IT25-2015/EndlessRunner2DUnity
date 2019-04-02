@@ -5,20 +5,29 @@ using Runner;
 
 public class PlayerChecker : MonoBehaviour
 {
-    public int playerChecker = 1;
-    // Start is called before the first frame update
+
 
     private void Awake()
     {
         RunnerManager.PlayerChecker = this;
     }
 
-    public void ChoosePlayer()
+    public void ChoosePlayer1()
     {
-        if(playerChecker == 1)
-        {
+        RunnerManager.UIManager.spriteNO = 0;
+        RunnerManager.SaveGame.playerNO = 0;
+    }
 
-        }
+    public void ChoosePlayer2()
+    {
+        RunnerManager.UIManager.spriteNO = 1;
+        RunnerManager.SaveGame.playerNO = 1;
+    }
+
+    public void ChoosePlayer3()
+    {
+        RunnerManager.UIManager.spriteNO = 2;
+        RunnerManager.SaveGame.playerNO = 2;
     }
 
     void Start()

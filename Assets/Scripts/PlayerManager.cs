@@ -86,6 +86,7 @@ public class PlayerManager : MonoBehaviour
         gameObject.SetActive(false);
         isDead = true;
         RunnerManager.UIManager.gameOver = true;
+        //RunnerManager.UIManager.gameOverBTN = true;
     }
 
     void SpawnPlayer()

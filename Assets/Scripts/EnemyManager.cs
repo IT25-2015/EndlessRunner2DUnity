@@ -25,7 +25,7 @@ public class EnemyManager : MonoBehaviour
     
     public void IsDead()
     {
-        gameObject.SetActive(false);
+        this.gameObject.SetActive(false);
     }
     
     private void OnTriggerEnter2D(Collider2D collision)

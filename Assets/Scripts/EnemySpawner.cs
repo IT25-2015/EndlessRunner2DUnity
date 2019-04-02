@@ -9,8 +9,8 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private GameObject spawnerPrefab;
     public List<GameObject> enemiesToSpawn;
     public List <GameObject> activeEnemies;
-    [SerializeField] private float maxPos = 1.35f;
-    [SerializeField] private float minPos = -1.23f;
+    private float maxPos = 1.35f;
+    private float minPos = -1.23f;
     private Vector3 p;
     [SerializeField] private Transform spawnObject;
     public GameObject enemy;
@@ -54,5 +54,7 @@ public class EnemySpawner : MonoBehaviour
          Vector3 enemyPos = new Vector3(maxPos, spawnObject.transform.position.y, spawnObject.transform.position.z);
          enemy.transform.position = enemyPos;
          enemy.SetActive(true);
-        }        
- }
+    }
+
+    
+}

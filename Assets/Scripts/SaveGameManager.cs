@@ -8,8 +8,10 @@ public class SaveGameManager : MonoBehaviour
 {
     public int score;
     public int highScore;
+    public int playerNO;
     [SerializeField] private Text highScoreText;
     [SerializeField] private Text scoreText;
+
 
     private void Awake()
     {
@@ -18,20 +20,13 @@ public class SaveGameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        score = 0;  
-        highScore = PlayerPrefs.GetInt("HighScore", highScore);
+        playerNO = RunnerManager.UIManager.spriteNO;
+        score = 0;
+        LoadHighScore();
+        LoadPlayer();
         InvokeRepeating("ScoreUpdate", 1f, 1f);
     }
-
-    public void SaveScore()
-    {
-        
-    }
-
-    public void LoadScore()
-    {
-
-    }
+    
 
     void ScoreUpdate()
     {
@@ -43,7 +38,7 @@ public class SaveGameManager : MonoBehaviour
                 {
                     score += 1;
                 }
-                else if (RunnerManager.PlayerManager.speed > 7f)
+                else if (RunnerManager.PlayerManager.speed > 7f && RunnerManager.PlayerManager.speed < 12)
                 {
                     score += 2;
                 }
@@ -63,7 +58,27 @@ public class SaveGameManager : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
+    void SavePlayer()
+    {
+        PlayerPrefs.SetInt("Player NO", playerNO);
+    }
+
+    void LoadPlayer()
+    {
+        playerNO = PlayerPrefs.GetInt("Player NO", playerNO);
+    }
+
+    void SaveHighScore()
+    {
+        PlayerPrefs.SetInt("HighScore", highScore);
+    }
+
+    void LoadHighScore()
+    {
+        highScore = PlayerPrefs.GetInt("HighScore", highScore);
+    }
+
+
     void Update()
     {
         scoreText.text = "Score : " + score;
@@ -71,7 +86,8 @@ public class SaveGameManager : MonoBehaviour
         if (score > highScore)
         {
             highScore = score;
-            PlayerPrefs.SetInt("HighScore", highScore);
+            SaveHighScore();
         }
+        SavePlayer();
     }
 }
